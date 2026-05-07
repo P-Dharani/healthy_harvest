@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ plant[1] }} - Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <a href="{{ url_for('index') }}" class="back-link">Back to Search</a>
+    <div class="detail-card">
+        <h1>{{ plant[1] }}</h1>
+        <div class="detail-content">
+            <p><strong>Color:</strong> {{ plant[2] }}</p>
+            <p><strong>Type:</strong> {{ plant[3] }}</p>
+            <p><strong>Medicinal Use:</strong> {{ plant[4] }}</p>
+            <p><strong>Growth Time:</strong> {{ plant[5] }}</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

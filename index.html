@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medicinal Fruits & Vegetables</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Medicinal Fruits & Vegetables</h1>
+    <form method="POST" class="search-form">
+        <input type="text" name="search" list="plants" placeholder="Search for plants..." value="{{ search_query }}" autocomplete="off">
+        <datalist id="plants">
+            {% for plant in all_plants %}
+            <option value="{{ plant }}">
+            {% endfor %}
+        </datalist>
+        <button type="submit">Search</button>
+    </form>
+    {% if plants %}
+    <div class="results">
+        <h2>Search Results:</h2>
+        <ul class="plant-list">
+            {% for plant in plants %}
+            <li>
+                <a href="{{ url_for('plant_detail', plant_id=plant[0]) }}">
+                    {% if 'Red' in plant[2] %}🍅{% elif 'Orange' in plant[2] %}🥕{% elif 'Green' in plant[2] %}🥬{% elif 'Yellow' in plant[2] %}🍌{% elif 'Purple' in plant[2] %}🍆{% elif 'White' in plant[2] %}🧄{% elif 'Brown' in plant[2] %}🥔{% elif 'Blue' in plant[2] %}🫐{% else %}🌱{% endif %}
+                    {{ plant[1] }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</div>
+</body>
+</html>
